@@ -25,9 +25,18 @@ export const AllCourses = () => {
               <CoursesItem key={id}>
                 <h3>{title}</h3>
                 <img src={previewImageLink + '/cover.webp'} alt="course" />
-                <p>Lessons: {lessonsCount}</p>
-                <p>Rating: {rating}</p>
-                <p>Skills: {meta.skills}</p>
+                <p>
+                  <b>Lessons:</b> {lessonsCount}
+                </p>
+                <p>
+                  <b>Rating:</b> {rating}
+                </p>
+                <ul>
+                  <b>Skills:</b>{' '}
+                  {meta?.skills?.map(skill => (
+                    <li>{skill}</li>
+                  ))}
+                </ul>
               </CoursesItem>
             )
           )}
