@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import api from 'services/api';
+import { Wrapper } from './MyCoursePage.styled';
 
 export const MyCoursePage = () => {
   const [course, setCourse] = useState({});
@@ -13,17 +14,43 @@ export const MyCoursePage = () => {
     });
   }, []);
 
-  console.log(course);
+  const { title, previewImageLink, rating, description, lessons } = course;
 
   return (
     <>
       {isLoading ? (
         <h2>Loading...</h2>
       ) : (
-        <div>
-          <h2>{course.title}</h2>
-          <img src={course.previewImageLink + '/cover.webp'} alt="" />
-        </div>
+        <Wrapper>
+          <h2>{title}</h2>
+          <img
+            src={previewImageLink + '/cover.webp'}
+            alt="course img"
+            width="700"
+          />
+          <p>
+            <b>Course rating:</b> {rating}
+          </p>
+          <p>
+            <b>About course:</b> {description}
+          </p>
+          <p>
+            <b>Improve your skills: </b>
+            {course.meta?.skills?.map(skill => (
+              <li>{skill}</li>
+            ))}
+          </p>
+          <ol>
+            <h3>Lessons:</h3>
+            {lessons?.map(({ id, title, link, status }) => (
+              <li key={id}>
+                <a href={link}>
+                  <strong>{title}</strong> | <span>status: {status}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </Wrapper>
       )}
     </>
   );
