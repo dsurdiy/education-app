@@ -12,6 +12,7 @@ export const StyledLink = styled(Link)`
   margin: 0 auto;
   width: 300px;
   padding: 15px;
+  margin-bottom: 15px;
   border-radius: 10px;
   background-color: #ccc;
   text-align: center;
