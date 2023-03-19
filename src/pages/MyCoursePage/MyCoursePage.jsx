@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import api from 'services/api';
 import { Wrapper } from './MyCoursePage.styled';
+// import { VideoPlayer } from 'components/VideoPlayer/VideoPlayer';
 
 export const MyCoursePage = () => {
   const [course, setCourse] = useState({});
@@ -42,11 +43,13 @@ export const MyCoursePage = () => {
           </p>
           <ol>
             <h3>Lessons:</h3>
-            {lessons?.map(({ id, title, link, status }) => (
+            {lessons?.map(({ id, title, link, status, order }) => (
               <li key={id}>
+                {/* <img src={`${previewImageLink}/lesson-${order}.webp`} alt="" /> */}
                 <a href={link}>
                   <strong>{title}</strong> | <span>status: {status}</span>
                 </a>
+                {/* <VideoPlayer link={link} /> */}
               </li>
             ))}
           </ol>
